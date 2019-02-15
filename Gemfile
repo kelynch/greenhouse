@@ -54,8 +54,11 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'blacklight'
 gem 'hydra-head', '~> 10.0'
+gem 'valkyrie'
 group :development, :test do
   gem 'solr_wrapper', '>= 0.3'
+  gem 'pry'
+  gem 'pry-rails'
 end
 
 gem 'rsolr', '>= 1.0'
@@ -67,4 +70,7 @@ gem 'devise-guests', '~> 0.6'
 group :development, :test do
   gem 'fcrepo_wrapper'
   gem 'rspec-rails'
+end
+
+group :development, :test do
 end
