@@ -283,6 +283,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
+    rb-readline (0.5.5)
     rdf (3.0.9)
       hamster (~> 3.0)
       link_header (~> 0.0, >= 0.0.8)
@@ -431,6 +432,7 @@ DEPENDENCIES
   pry-rails
   puma (~> 3.7)
   rails (~> 5.1.6, >= 5.1.6.1)
+  rb-readline
   rsolr (>= 1.0)
   rspec-rails
   sass-rails (~> 5.0)

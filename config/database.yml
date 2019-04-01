@@ -1,25 +1,23 @@
-# SQLite version 3.x
-#   gem install sqlite3
-#
-#   Ensure the SQLite 3 gem is defined in your Gemfile
-#   gem 'sqlite3'
-#
 default: &default
-  adapter: sqlite3
+  adapter: postgresql
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
-
+  database: <%= ENV.fetch('RDS_DB_NAME', 'wings_db') %>
+  username: <%= ENV.fetch('RDS_USERNAME', 'wings_user') %>
+  password: <%= ENV.fetch('RDS_PASSWORD', 'wings-pw') %>
+  host: <%= ENV.fetch('RDS_HOSTNAME', 'localhost') %>
+  port: <%= ENV.fetch('RDS_PORT', 5432) %>
 development:
   <<: *default
-  database: db/development.sqlite3
-
-# Warning: The database defined as "test" will be erased and
-# re-generated from your development database when you run "rake".
-# Do not set this db to the same as development or production.
+  database: development
 test:
   <<: *default
-  database: db/test.sqlite3
-
+  database: test
+staging:
+  <<: *default
+  encoding: unicode
+  pool: 50
 production:
   <<: *default
-  database: db/production.sqlite3
+  encoding: unicode
+  pool: 50

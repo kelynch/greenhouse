@@ -70,6 +70,7 @@ gem 'devise-guests', '~> 0.6'
 group :development, :test do
   gem 'fcrepo_wrapper'
   gem 'rspec-rails'
+  gem 'rb-readline'
 end
 
 group :development, :test do
