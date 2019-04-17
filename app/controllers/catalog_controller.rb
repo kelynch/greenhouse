@@ -5,7 +5,8 @@ class CatalogController < ApplicationController
 
   include Hydra::Catalog
   # This filter applies the hydra access controls
-  before_action :enforce_show_permissions, only: :show
+  #before_action :enforce_show_permissions, only: :show
+  Hydra::SearchBuilder.default_processor_chain -= [:add_access_controls_to_solr_params]
 
   configure_blacklight do |config|
     ## Class for sending and receiving requests from a search index
@@ -65,6 +66,7 @@ class CatalogController < ApplicationController
 
     # solr fields to be displayed in the index (search results) view
     #   The ordering of the field names is the order of the display
+    config.add_index_field solr_name('unique_identifier', :stored_searchable, type: :string), label: 'Unique ID'
     config.add_index_field solr_name('title', :stored_searchable, type: :string), label: 'Title'
     config.add_index_field solr_name('title_vern', :stored_searchable, type: :string), label: 'Title'
     config.add_index_field solr_name('author', :stored_searchable, type: :string), label: 'Author'
@@ -77,6 +79,7 @@ class CatalogController < ApplicationController
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display
+    config.add_show_field solr_name('unique_identifier', :stored_searchable, type: :string), label: 'Unique ID'
     config.add_show_field solr_name('title', :stored_searchable, type: :string), label: 'Title'
     config.add_show_field solr_name('title_vern', :stored_searchable, type: :string), label: 'Title'
     config.add_show_field solr_name('subtitle', :stored_searchable, type: :string), label: 'Subtitle'
