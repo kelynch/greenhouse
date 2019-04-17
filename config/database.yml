@@ -3,8 +3,8 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
   database: <%= ENV.fetch('RDS_DB_NAME', 'wings_db') %>
-  username: <%= ENV.fetch('RDS_USERNAME', 'wings_user') %>
-  password: <%= ENV.fetch('RDS_PASSWORD', 'wings-pw') %>
+  username: <%= ENV.fetch('RDS_USERNAME', 'kate') %>
+  password: <%= ENV.fetch('RDS_PASSWORD', '') %>
   host: <%= ENV.fetch('RDS_HOSTNAME', 'localhost') %>
   port: <%= ENV.fetch('RDS_PORT', 5432) %>
 development:

@@ -17,9 +17,13 @@ Rails.application.config.to_prepare do
       Valkyrie::Persistence::Fedora::MetadataAdapter.new(
           connection: ::Ldp::Client.new("http://localhost:8984/rest"),
           base_path: "dev",
-          schema: Valkyrie::Persistence::Fedora::PermissiveSchema.new(title: RDF::URI("http://http://library.upenn.edu/pqc/ns/title"))
+          schema: Valkyrie::Persistence::Fedora::PermissiveSchema.new(title: RDF::URI("http://library.upenn.edu/pqc/ns/title"))
       ), :fedora
   )
+
+  Valkyrie.config.resource_class_resolver = lambda do |resource_klass_name|
+    Valkyrie::GenericWork
+  end
 
 
 
